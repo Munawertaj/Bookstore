@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('author', 255);
             $table->string('isbn', 13);
             $table->float('price', 8, 2)->nullable();
-            $table->smallInteger('stock')->default(0);
+            $table->smallInteger('stock')->default(0); 
             $table->timestamps();
         });
     }
