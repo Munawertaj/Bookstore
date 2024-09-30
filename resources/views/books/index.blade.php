@@ -2,6 +2,10 @@
 
 @section('page-content') 
 
+    <p class = "text-end">
+        <a class = "btn btn-primary" href = " {{route('books.create')}}"> Add Book </a>
+    </p>
+
     <table class="table table-striped table-bordered">
         <tr>
             <th> ID </th>

@@ -36,6 +36,8 @@
     </table>
 
     <br>
-    <a href="{{route('books.index',)}}"> Back </a>
+    <p class = "text-end">
+        <a class = "btn btn-primary" href = " {{route('books.index',)}}"> Back </a>
+    </p>
 
 @endsection
