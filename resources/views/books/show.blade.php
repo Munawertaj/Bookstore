@@ -2,6 +2,13 @@
 
 @section('page-content') 
 
+    <h1 align = "Center"> Book Information </h1>
+
+    <br>
+    <p class = "text-end">
+        <a class = "btn btn-primary" href = " {{route('books.index',)}}"> Back </a>
+    </p>
+
     <table class = "table table-striped table-bordered">
         <tr>
             <th> ID </th>
@@ -35,9 +42,6 @@
 
     </table>
 
-    <br>
-    <p class = "text-end">
-        <a class = "btn btn-primary" href = " {{route('books.index',)}}"> Back </a>
-    </p>
+    
 
 @endsection

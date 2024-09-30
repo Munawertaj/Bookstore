@@ -2,7 +2,11 @@
 
 @section('page-content') 
 
-    <legend> New Book </legend>
+    <h1 align = "center"> New Book </h1>
+
+    <p class = "text-end">
+        <a class = "btn btn-primary" href = " {{route('books.index',)}}"> Back </a>
+    </p>
 
     <form method = "post" action="{{route('books.store')}}">
         @csrf
@@ -37,12 +41,10 @@
             <div> {{$errors->first('price')}} </div>
         </div> 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success me-3">Submit</button>
+
     </form>
 
-    <br>
-    <p class = "text-end">
-        <a class = "btn btn-primary" href = " {{route('books.index',)}}"> Back </a>
-    </p>
+
 
 @endsection 

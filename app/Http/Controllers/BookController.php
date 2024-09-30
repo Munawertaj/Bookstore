@@ -8,7 +8,8 @@ use App\Models\Book;
 class BookController extends Controller
 {
     //
-    public function index() {
+    public function index()
+    {
 
         $allBooks = Book::paginate(10);
 
@@ -16,19 +17,22 @@ class BookController extends Controller
                     ->with('allBooks', $allBooks);
     }
 
-    public function show($id) {
+    public function show($id) 
+    {
 
         $book = Book::find($id);
 
         return view('books.show')->with('book', $book);
     }
 
-    public function create() {
+    public function create() 
+    {
 
         return view('books.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
 
         $rules = [
             'title'     =>'required',
@@ -83,6 +87,41 @@ class BookController extends Controller
         $book->delete();
 
         return redirect()->route('books.index');
+    }
+
+    public function edit($id)
+    {
+        $book = Book::find($id); // Find the book by ID
+
+        return view('books.edit')->with('book', $book); // Return view with the book's data
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Define validation rules
+        $rules = [
+            'title'     =>'required',
+            'author'    =>'required',
+            'isbn'      =>'required|size:13',
+            'stock'     =>'required|numeric|integer|gte:0',
+            'price'     =>'required|numeric'
+        ];
+
+        $messages = [
+            'stock.gte' => 'The stock must be greater than or equal to 0',
+        ];
+
+        // Validate the incoming request
+        $request->validate($rules, $messages);
+
+        // Find the book by ID
+        $book = Book::find($id);
+
+        // Update the book details with new data
+        $book->update($request->all());
+
+        // Redirect to the show page with a success message
+        return redirect()->route('books.show', $book->id)->with('success', 'Book updated successfully!');
     }
 
 }
