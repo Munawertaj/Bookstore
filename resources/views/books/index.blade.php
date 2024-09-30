@@ -7,15 +7,26 @@
 </head>
 <body>
     
-    <!-- <h1>Hello Laravel</h1> -->
+    <h1>BOOKSTORE</h1>
 
-    <ol>
-    
+    <table border="1", cellspacing = "0">
+        <tr>
+            <th> ID </th>
+            <th> Title </th>
+            <th> Author </th>
+            <th> Details </th>
+        </tr>
+        
         @foreach($allBooks as $book)
-            <li> {{$book->title}}  price - {{$book->price}}</li>
+            <tr>
+                <td> {{$book->id}} </td>
+                <td> {{$book->title}} </td>
+                <td> {{$book->author}} </td>
+                <td><a href="{{route('books.show', $book->id)}}"> Details </a></td>
+            </tr>
         @endforeach
 
-    </ol>
+    </table>
     
 </body>
 </html>

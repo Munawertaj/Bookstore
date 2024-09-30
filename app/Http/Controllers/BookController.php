@@ -15,4 +15,11 @@ class BookController extends Controller
         return view('books.index')
                     ->with('allBooks', $allBooks);
     }
+
+    public function show($id) {
+
+        $book = Book::find($id);
+
+        return view('books.show')->with('book', $book);
+    }
 }
